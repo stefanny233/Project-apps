@@ -15,30 +15,41 @@ class AuthActivity : AppCompatActivity() {
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
-
         binding.btnLogin.setOnClickListener {
-            val username = binding.etUsername.text.toString()
-            val password = binding.etPassword.text.toString()
+            val inputUser = binding.etUsername.text.toString()
+            val inputPass = binding.etPassword.text.toString()
 
-            // Logika Praktikum: Username harus sama dengan Password
-            if (username.isNotEmpty() && username == password) {
-                // Simpan ke SharedPreferences
-                val editor = sharedPref.edit()
+            val sp = getSharedPreferences("UserDB", Context.MODE_PRIVATE)
+            val savedUser = sp.getString("sp_user", null)
+            val savedPass = sp.getString("sp_pass", null)
+
+            val isRulePraktikum = (inputUser.isNotEmpty() && inputUser == inputPass)
+            val isRuleRegistrasi = (inputUser == savedUser && inputPass == savedPass && savedUser != null)
+
+            if (isRulePraktikum || isRuleRegistrasi) {
+                // Login Berhasil
+                val editor = sp.edit()
                 editor.putBoolean("isLogin", true)
-                editor.putString("username", username)
+                editor.putString("username", inputUser)
                 editor.apply()
 
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
-                // Tampilkan AlertDialog sesuai instruksi
+                // Login Gagal (Soal a2: Tampilkan isian yang tidak sesuai)
+                binding.etUsername.error = "Username atau Password salah!"
+
                 AlertDialog.Builder(this)
                     .setTitle("Login Gagal")
-                    .setMessage("Silahkan coba lagi")
+                    .setMessage("Username atau Password tidak sesuai dengan data registrasi!")
                     .setPositiveButton("OK", null)
                     .show()
             }
+        }
+
+        // Tambahkan fungsi pindah ke Register
+        binding.tvToRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }
