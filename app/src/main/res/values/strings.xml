@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Project-apps</string>
 
     <string-array name="agama_list">
@@ -10,4 +11,5 @@
         <item>Buddha</item>
         <item>Konghucu</item>
     </string-array>
+
 </resources>
