@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projectapps"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
         <activity
             android:name=".WebViewActivity"
             android:exported="false" />
@@ -26,8 +28,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
