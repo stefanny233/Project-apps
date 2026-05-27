@@ -1,5 +1,6 @@
 package com.example.project_apps
 
+import android.content.Intent // 1. Tambahan import wajib biar gak error mase
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,11 @@ class MessageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnToSetting.setOnClickListener {
+            val intent = Intent(requireContext(), SettingActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

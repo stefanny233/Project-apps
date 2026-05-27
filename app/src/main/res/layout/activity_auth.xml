@@ -84,17 +84,29 @@
                 app:strokeColor="#C5E1A5"
                 app:strokeWidth="2dp">
 
-                <EditText
-                    android:id="@+id/etUsername"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilUsername"
+                    style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:hint="Username"
-                    android:inputType="text"
-                    android:paddingHorizontal="20dp"
-                    android:textSize="14sp"
-                    android:textColorHint="#BDBDBD" />
+                    app:hintEnabled="false"
+                    app:startIconDrawable="@drawable/ic_menu_myplaces"
+                    app:startIconTint="#2E7D32">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Username"
+                        android:inputType="text"
+                        android:paddingStart="0dp"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:textSize="14sp"
+                        android:textColor="#212121"
+                        android:textColorHint="#BDBDBD" />
+                </com.google.android.material.textfield.TextInputLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -107,17 +119,31 @@
                 app:strokeColor="#C5E1A5"
                 app:strokeWidth="2dp">
 
-                <EditText
-                    android:id="@+id/etPassword"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPassword"
+                    style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:paddingHorizontal="20dp"
-                    android:textSize="14sp"
-                    android:textColorHint="#BDBDBD" />
+                    app:hintEnabled="false"
+                    app:startIconDrawable="@drawable/ic_lock_lock"
+                    app:startIconTint="#2E7D32"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="#2E7D32">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingStart="0dp"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:textSize="14sp"
+                        android:textColor="#212121"
+                        android:textColorHint="#BDBDBD" />
+                </com.google.android.material.textfield.TextInputLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
@@ -125,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="24dp"
-                android:text="Login ke Akun"
+                android:text="Login Akun"
                 android:textAllCaps="false"
                 android:textSize="15sp"
                 android:textStyle="bold"

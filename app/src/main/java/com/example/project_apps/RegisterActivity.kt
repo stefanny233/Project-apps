@@ -39,7 +39,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validateAndSave() {
-        // Ambil data sesuai ID di XML kamu
         val nama = binding.etNama.text.toString()
         val tgl = binding.etTglLahir.text.toString()
         val user = binding.etUsernameReg.text.toString()
@@ -48,20 +47,18 @@ class RegisterActivity : AppCompatActivity() {
         val agama = binding.spAgama.selectedItem?.toString() ?: ""
         val genderId = binding.rgGender.checkedRadioButtonId
 
-        // Validasi Kosong
         if (nama.isEmpty() || tgl.isEmpty() || user.isEmpty() || pass.isEmpty() || genderId == -1 || agama == "Pilih Agama") {
             Toast.makeText(this, "Woi! Semua data wajib diisi!", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Validasi Password Sama
         if (pass != confPass) {
             binding.etConfirmPass.error = "Password gak sama jer!"
             return
         }
 
-        // Simpan ke SharedPreference
-        val sharedPref = getSharedPreferences("UserDB", Context.MODE_PRIVATE)
+        // Ganti "UserDB" → "user_pref"
+        val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putString("saved_user", user)
         editor.putString("saved_pass", pass)
@@ -69,8 +66,6 @@ class RegisterActivity : AppCompatActivity() {
         editor.apply()
 
         Toast.makeText(this, "Registrasi Berhasil!", Toast.LENGTH_SHORT).show()
-
-        // BALIK KE LOGIN
         finish()
     }
 }

@@ -9,54 +9,66 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="30dp">
+            android:paddingBottom="40dp">
 
-            <!-- Header background -->
+            <!-- HEADER -->
             <View
                 android:id="@+id/headerBg"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="250dp"
                 android:background="#2E7D32"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Dekorasi blob kuning di header -->
+            <!-- Dekorasi kanan atas -->
             <View
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginTop="-50dp"
-                android:layout_marginEnd="-50dp"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                android:layout_marginTop="-60dp"
+                android:layout_marginEnd="-60dp"
+                android:alpha="0.18"
                 android:background="#F9D56E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Dekorasi kiri -->
+            <View
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="-40dp"
+                android:layout_marginTop="90dp"
+                android:alpha="0.18"
+                android:background="#A5D6A7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Bulatan kecil -->
+            <View
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="28dp"
+                android:background="#FFFFFF"
                 android:alpha="0.15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Dekorasi blob hijau muda di header -->
-            <View
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_marginStart="-40dp"
-                android:layout_marginTop="80dp"
-                android:background="#8BC34A"
-                android:alpha="0.2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Label kecil kuning di atas judul -->
             <TextView
                 android:id="@+id/tvWelcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="52dp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.18"
                 android:text="SELAMAT DATANG"
                 android:textColor="#F9D56E"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -65,37 +77,52 @@
                 android:id="@+id/tvHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginHorizontal="32dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="5dp"
                 android:text="Dashboard\nBina Desa Digital"
                 android:textColor="#FFFFFF"
-                android:textSize="26sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                android:gravity="center"
-                android:lineSpacingExtra="4dp"
-                android:letterSpacing="0.01"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
 
-            <!-- Card logo dengan border kuning -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardLogo"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="-45dp"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="12dp"
-                app:strokeColor="#F9D56E"
-                app:strokeWidth="4dp"
+            <!-- SUBTITLE -->
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Layanan digital desa modern"
+                android:textColor="#DDEEDC"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/headerBg">
+                app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+
+            <!-- LOGO CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLogo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="-50dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/headerBg"
+                app:strokeColor="#F9D56E"
+                app:strokeWidth="4dp">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:padding="18dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/logo_bina_desa" />
             </com.google.android.material.card.MaterialCardView>
@@ -104,40 +131,41 @@
                 android:id="@+id/tvTitleApp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.10"
                 android:text="BINA DESA"
                 android:textColor="#1B5E20"
-                android:textSize="18sp"
+                android:textSize="19sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.08"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardLogo" />
 
-            <!-- Garis aksen kuning bawah judul -->
+            <!-- Garis -->
             <View
                 android:id="@+id/dividerYellow"
-                android:layout_width="40dp"
-                android:layout_height="3dp"
-                android:layout_marginTop="6dp"
+                android:layout_width="55dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="8dp"
                 android:background="#F9D56E"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitleApp" />
 
-            <!-- Card Web Bina Desa -->
+            <!-- CARD WEBSITE -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnWebViewCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="28dp"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="4dp"
+                android:layout_marginTop="30dp"
                 app:cardBackgroundColor="#FFFFFF"
-                app:strokeColor="#E8F5E9"
-                app:strokeWidth="1dp"
-                app:layout_constraintTop_toBottomOf="@id/dividerYellow">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                app:layout_constraintTop_toBottomOf="@id/dividerYellow"
+                app:strokeColor="#E6F0E7"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:id="@+id/btnWebView"
@@ -149,51 +177,58 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="18dp">
+                    android:padding="20dp">
 
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="#E8F5E9"
-                        android:padding="12dp"
-                        android:src="@android:drawable/ic_menu_myplaces"
-                        app:tint="#2E7D32" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        app:cardBackgroundColor="#E8F5E9"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            app:tint="#2E7D32" />
+                    </com.google.android.material.card.MaterialCardView>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="16dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
                             android:text="Web Bina Desa"
                             android:textColor="#1B5E20"
-                            android:textSize="15sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="Klik untuk akses website desa"
-                            android:textColor="#9E9E9E"
-                            android:textSize="12sp"
-                            android:layout_marginTop="2dp" />
+                            android:textColor="#8E8E8E"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
-                    <!-- Panah dengan background hijau -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        app:cardCornerRadius="10dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         app:cardBackgroundColor="#2E7D32"
+                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp">
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
                             android:layout_gravity="center"
                             android:src="@android:drawable/ic_media_play"
                             app:tint="#FFFFFF" />
@@ -202,36 +237,38 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Tips card - kuning -->
+            <!-- TIPS CARD -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="14dp"
-                app:cardBackgroundColor="#F9D56E"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="0dp"
-                app:layout_constraintTop_toBottomOf="@id/btnWebViewCard">
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#FFF4CC"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="2dp"
+                app:layout_constraintTop_toBottomOf="@id/btnWebViewCard"
+                app:strokeColor="#FFE082"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:padding="16dp">
+                    android:orientation="horizontal"
+                    android:padding="18dp">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        app:cardCornerRadius="10dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginEnd="12dp"
                         app:cardBackgroundColor="#FFFFFF"
-                        app:cardElevation="0dp"
-                        android:layout_marginEnd="12dp">
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp">
 
                         <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:src="@android:drawable/ic_dialog_info"
                             app:tint="#F9A825" />
@@ -241,35 +278,39 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:lineSpacingExtra="3dp"
                         android:text="Tips: Gunakan layanan digital untuk mempercepat administrasi desa kamu."
                         android:textColor="#5D4037"
-                        android:textSize="12sp"
-                        android:lineSpacingExtra="3dp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Logout button -->
+            <!-- LOGOUT BUTTON -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#C62828"
+                android:elevation="3dp"
+                android:fontFamily="sans-serif-medium"
+                android:paddingVertical="12dp"
                 android:text="Logout"
                 android:textAllCaps="false"
-                android:textColor="#C62828"
-                app:strokeColor="#FFCDD2"
-                app:strokeWidth="1dp"
-                app:cornerRadius="12dp"
-                app:icon="@android:drawable/ic_delete"
-                app:iconTint="#C62828"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:cornerRadius="18dp"
+                app:icon="@android:drawable/ic_lock_power_off"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                app:iconTint="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@id/materialCardView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

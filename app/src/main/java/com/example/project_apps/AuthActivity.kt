@@ -20,12 +20,10 @@ class AuthActivity : AppCompatActivity() {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
-            // Soal 3a: Ambil data dari SharedPreference UserDB
-            val sharedPref = getSharedPreferences("UserDB", Context.MODE_PRIVATE)
+            val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
             val savedUser = sharedPref.getString("saved_user", null)
             val savedPass = sharedPref.getString("saved_pass", null)
 
-            // Soal 3b: Logika pengecekan login
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 if (username == savedUser && password == savedPass) {
                     // Login Berhasil
@@ -36,7 +34,6 @@ class AuthActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {
-                    // Soal 3b: Pesan error jika tidak sesuai
                     AlertDialog.Builder(this)
                         .setTitle("Login Gagal")
                         .setMessage("Username atau Password tidak sesuai dengan data registrasi!")
