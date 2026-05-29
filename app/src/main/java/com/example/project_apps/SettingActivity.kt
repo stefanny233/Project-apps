@@ -14,13 +14,16 @@ class SettingActivity : AppCompatActivity() {
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setup toolbar atas biar bisa kembali
+        // Setup toolbar atas biar bisa kembali (Menggunakan Toolbar dari XML kamu)
         setSupportActionBar(binding.toolbarSetting)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // Menangani klik tombol panah kembali di toolbar
         binding.toolbarSetting.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
+        // List menu bawaan kamu
         val listMenu = listOf(
             "Kebijakan Privasi (Privacy Policy)",
             "Pusat Bantuan & Kontak",
@@ -28,9 +31,11 @@ class SettingActivity : AppCompatActivity() {
             "Keluar Akun"
         )
 
+        // Set adapter bawaan Android ke ListView kamu
         val adapterBawaan = ArrayAdapter(this, android.R.layout.simple_list_item_1, listMenu)
-
         binding.listViewSetting.adapter = adapterBawaan
+
+        // Logika klik item memunculkan Snackbar penunjuk menu
         binding.listViewSetting.setOnItemClickListener { _, parentView, position, _ ->
             val menuTerpilih = listMenu[position]
             Snackbar.make(parentView, "Membuka: $menuTerpilih", Snackbar.LENGTH_SHORT).show()

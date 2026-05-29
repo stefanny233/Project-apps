@@ -8,9 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp">
 
-        <!-- HEADER -->
         <View
             android:id="@+id/headerBg"
             android:layout_width="match_parent"
@@ -18,7 +18,6 @@
             android:background="#2E7D32"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- CIRCLE DECOR -->
         <View
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -29,7 +28,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TOP BAR -->
         <LinearLayout
             android:id="@+id/topBar"
             android:layout_width="match_parent"
@@ -41,8 +39,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnToHome"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardBackgroundColor="#45A049"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp">
@@ -56,9 +58,10 @@
             </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -78,9 +81,27 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnToSetting"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#45A049"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_manage"
+                    app:tint="@android:color/white" />
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
 
-        <!-- CARD DEVELOPER -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardDev"
             android:layout_width="match_parent"
@@ -160,7 +181,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- CARD PROJECT -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardProject"
             android:layout_width="match_parent"
@@ -221,7 +241,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- CARD INSTANSI -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardInstansi"
             android:layout_width="match_parent"
@@ -282,180 +301,62 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- FITUR -->
-        <LinearLayout
-            android:id="@+id/layoutFitur"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="24dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/cardInstansi">
-
-            <!-- TITLE -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_marginBottom="12dp">
-
-                <View
-                    android:layout_width="4dp"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="#F9D56E" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fitur Utama Kami"
-                    android:textColor="#1B5E20"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <!-- GRID -->
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="2">
-
-                <!-- CARD 1 -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="140dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="#E8F5E9"
-                    app:strokeWidth="1dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginBottom="10dp"
-                            app:cardBackgroundColor="#E8F5E9"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="0dp">
-
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_edit"
-                                app:tint="#2E7D32" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Digitalisasi Data"
-                            android:textColor="#1B5E20"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- CARD 2 -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="140dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="#E8F5E9"
-                    app:strokeWidth="1dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginBottom="10dp"
-                            app:cardBackgroundColor="#FFF9E6"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="0dp">
-
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_dialog_info"
-                                app:tint="#F9A825" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Edukasi Teknologi"
-                            android:textColor="#1B5E20"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </GridLayout>
-
-            <!-- BUTTON -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnToSetting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:padding="14dp"
-                android:text="Masuk ke Pengaturan"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:backgroundTint="#2E7D32"
-                app:cornerRadius="16dp" />
-
-        </LinearLayout>
-
-        <!-- VERSION -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardVersion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="16dp"
             app:cardBackgroundColor="#FAD689"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:layout_constraintTop_toBottomOf="@id/layoutFitur">
+            app:layout_constraintTop_toBottomOf="@id/cardInstansi">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:padding="12dp"
+                android:padding="10dp"
                 android:text="✓ Versi 1.0.0 · Build Stable"
                 android:textColor="#5D4037"
-                android:textSize="13sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintTop_toBottomOf="@id/cardVersion">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                app:tabTextColor="#9E9E9E"
+                app:tabSelectedTextColor="#2E7D32"
+                app:tabIndicatorColor="#2E7D32"
+                app:tabIconTint="@null"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bina_desa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="18dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardTabs" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
