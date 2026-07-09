@@ -13,19 +13,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set Toolbar Utama
         setSupportActionBar(binding.toolbar)
 
-        // Tampilkan HomeFragment sebagai halaman awal
         if (savedInstanceState == null) {
             replaceFragment(HomeFragment())
         }
 
-        // Navigasi Bottom Menu
         binding.bottomNavView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> replaceFragment(HomeFragment())
                 R.id.nav_message -> replaceFragment(MessageFragment())
+                R.id.nav_report -> replaceFragment(ReportFragment())
                 R.id.nav_more -> replaceFragment(MoreFragment())
             }
             true

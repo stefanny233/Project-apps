@@ -30,30 +30,24 @@ class MoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Logika Klik Masuk ke Pengaturan (Sekarang letaknya di pojok kanan atas)
         binding.btnToSetting.setOnClickListener {
             val intent = Intent(requireContext(), SettingActivity::class.java)
             startActivity(intent)
         }
 
-        // 2. Logika Klik Kembali ke HomeFragment
         binding.btnToHome.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, HomeFragment())
                 .commit()
         }
 
-        // --- Setup TabLayout & RecyclerView ---
         setupDummyData()
 
-        // SINKRONISASI ID: Menggunakan rvBinaDesa sesuai dengan isi fragment_more.xml terbaru
         binding.rvBinaDesa.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvBinaDesa.adapter = BinaDesaAdapter(listDesa)
 
-        // BERSIHKAN TAB LAMA (Cegah bug tab berlipat ganda)
         binding.tabLayoutMore.removeAllTabs()
 
-        // Bikin menu tab secara manual
         val tab1 = binding.tabLayoutMore.newTab().setText("Daftar Desa")
         tab1.icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_menu_myplaces)
         binding.tabLayoutMore.addTab(tab1)
@@ -62,7 +56,6 @@ class MoreFragment : Fragment() {
         tab2.icon = ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_menu_edit)
         binding.tabLayoutMore.addTab(tab2)
 
-        // Logika tukar data RecyclerView pas tab di-klik
         binding.tabLayoutMore.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {

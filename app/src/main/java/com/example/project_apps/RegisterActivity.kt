@@ -18,13 +18,11 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. Setup Spinner Agama (Pakai android.R.layout bawaan sistem)
         val listAgama = arrayOf("Pilih Agama", "Islam", "Kristen", "Katolik", "Hindu", "Budha", "Konghucu")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listAgama)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spAgama.adapter = adapter
 
-        // 2. Setup DatePicker
         binding.etTglLahir.setOnClickListener {
             val c = Calendar.getInstance()
             val datePickerDialog = DatePickerDialog(this, { _, year, month, day ->
@@ -53,11 +51,10 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         if (pass != confPass) {
-            binding.etConfirmPass.error = "Password gak sama jer!"
+            binding.etConfirmPass.error = "Password gak sama!"
             return
         }
 
-        // Ganti "UserDB" → "user_pref"
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putString("saved_user", user)

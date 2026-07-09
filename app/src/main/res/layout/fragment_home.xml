@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:paddingBottom="40dp">
 
-            <!-- HEADER -->
             <View
                 android:id="@+id/headerBg"
                 android:layout_width="match_parent"
@@ -25,7 +24,6 @@
                 android:background="#2E7D32"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Dekorasi kanan atas -->
             <View
                 android:layout_width="190dp"
                 android:layout_height="190dp"
@@ -36,7 +34,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Dekorasi kiri -->
             <View
                 android:layout_width="140dp"
                 android:layout_height="140dp"
@@ -47,7 +44,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Bulatan kecil -->
             <View
                 android:layout_width="18dp"
                 android:layout_height="18dp"
@@ -91,7 +87,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
 
-            <!-- SUBTITLE -->
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
@@ -104,7 +99,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvHeader" />
 
-            <!-- LOGO CARD -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardLogo"
                 android:layout_width="100dp"
@@ -142,7 +136,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardLogo" />
 
-            <!-- Garis -->
             <View
                 android:id="@+id/dividerYellow"
                 android:layout_width="55dp"
@@ -153,7 +146,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitleApp" />
 
-            <!-- CARD WEBSITE -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnWebViewCard"
                 android:layout_width="match_parent"
@@ -237,7 +229,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- TIPS CARD -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
                 android:layout_width="match_parent"
@@ -275,6 +266,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <TextView
+                        android:id="@+id/tvTips"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -285,13 +277,12 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- LOGOUT BUTTON -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:layout_marginHorizontal="70dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="#C62828"
                 android:elevation="3dp"
                 android:fontFamily="sans-serif-medium"
@@ -308,6 +299,32 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/materialCardView" />
+
+            <TextView
+                android:id="@+id/tvGalleryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Galeri Kegiatan Desa (API)"
+                android:textColor="#1B5E20"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnLogout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/tvGalleryTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/item_photo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

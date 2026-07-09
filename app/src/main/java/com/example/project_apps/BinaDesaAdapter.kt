@@ -19,7 +19,6 @@ data class BinaDesaModel(
 class BinaDesaAdapter(private val listData: List<BinaDesaModel>) :
     RecyclerView.Adapter<BinaDesaAdapter.ViewHolder>() {
 
-    // Menghubungkan komponen UI di dalam item_bina_desa.xml
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // ID di sesuaikan dengan item_bina_desa.xml yang kita buat sebelumnya
         val imgItem: ImageView = view.findViewById(R.id.imgItem)
@@ -27,20 +26,17 @@ class BinaDesaAdapter(private val listData: List<BinaDesaModel>) :
         val tvDesc: TextView = view.findViewById(R.id.tvDescItem)
     }
 
-    // Membuat cetakan baris list/grid baru
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_bina_desa, parent, false)
         return ViewHolder(view)
     }
 
-    // Memasukkan data dummy ke dalam komponen UI (Teks & Gambar dari internet)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = listData[position]
         holder.tvNama.text = data.nama
         holder.tvDesc.text = data.deskripsi
 
-        // Menggunakan Glide untuk mendownload gambar otomatis dari link URL internet
         Glide.with(holder.itemView.context)
             .load(data.gambar) // Membaca URL String (https://picsum.photos/...)
             .placeholder(android.R.drawable.ic_menu_gallery) // Gambar loading sementara

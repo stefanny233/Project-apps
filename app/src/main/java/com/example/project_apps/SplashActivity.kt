@@ -12,17 +12,22 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Cek SharedPreferences sesuai modul "user_pref"
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val isLogin = sharedPref.getBoolean("isLogin", false)
 
+        val isFirstRun = sharedPref.getBoolean("isFirstRun", true)
+
         Handler(Looper.getMainLooper()).postDelayed({
             if (isLogin) {
-                // Jika sudah login, langsung ke Main
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
-                // Jika belum, ke Auth (Login)
-                startActivity(Intent(this, AuthActivity::class.java))
+                if (isFirstRun) {
+                    sharedPref.edit().putBoolean("isFirstRun", false).apply()
+
+                    startActivity(Intent(this, OnboardingActivity::class.java))
+                } else {
+                    startActivity(Intent(this, AuthActivity::class.java))
+                }
             }
             finish()
         }, 3000)
