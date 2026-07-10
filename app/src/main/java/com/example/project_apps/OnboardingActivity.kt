@@ -1,11 +1,12 @@
 package com.example.project_apps
 
+import android.content.Context // Import Context untuk akses SharedPreferences
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.project_apps.databinding.ActivityOnboardingBinding // Mengaktifkan ViewBinding mase
+import com.example.project_apps.databinding.ActivityOnboardingBinding
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -18,6 +19,7 @@ class OnboardingActivity : AppCompatActivity() {
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Data konten lembar halaman onboarding aplikasi Bina Desa mase
         val onboardingPages = listOf(
             OnboardingPage(
                 "Digitalisasi Desa",
@@ -39,11 +41,14 @@ class OnboardingActivity : AppCompatActivity() {
         val adapter = OnboardingAdapter(onboardingPages)
         binding.viewPagerOnboarding.adapter = adapter
 
+        // Hubungkan titik-titik indikator halaman mase
         binding.dotsIndicator.setViewPager2(binding.viewPagerOnboarding)
 
+        // Deteksi pergerakan swipe halaman mase
         binding.viewPagerOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                // Jika berada di halaman terakhir, ubah text tombol jadi "Ayo Mulai"
                 if (position == onboardingPages.size - 1) {
                     binding.btnActionOnboarding.text = "Ayo Mulai"
                 } else {
@@ -55,8 +60,12 @@ class OnboardingActivity : AppCompatActivity() {
         binding.btnActionOnboarding.setOnClickListener {
             val currentPos = binding.viewPagerOnboarding.currentItem
             if (currentPos < onboardingPages.size - 1) {
+                // Geser ke halaman berikutnya mase
                 binding.viewPagerOnboarding.currentItem = currentPos + 1
             } else {
+                val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+                sharedPref.edit().putBoolean("isFirstRun", false).apply()
+
                 val intent = Intent(this, AuthActivity::class.java)
                 startActivity(intent)
                 finish()

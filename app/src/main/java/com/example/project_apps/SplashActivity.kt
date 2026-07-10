@@ -14,7 +14,6 @@ class SplashActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val isLogin = sharedPref.getBoolean("isLogin", false)
-
         val isFirstRun = sharedPref.getBoolean("isFirstRun", true)
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -22,14 +21,12 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
                 if (isFirstRun) {
-                    sharedPref.edit().putBoolean("isFirstRun", false).apply()
-
                     startActivity(Intent(this, OnboardingActivity::class.java))
                 } else {
                     startActivity(Intent(this, AuthActivity::class.java))
                 }
             }
-            finish()
+            finish() // Tutup splash screen dari memory stack mase
         }, 3000)
     }
 }
